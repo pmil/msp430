@@ -23,6 +23,44 @@ Senesnėse revizijose reikia sukryžiuoti UART jungtis laidais. Tikrink savo
 plokštės reviziją ir vadovo schemą; prieš perkeldamas trumpiklius atjunk USB.
 VCC, TEST ir RST trumpiklių nekeisk.
 
+### J3 kontaktų ir trumpiklių schema (Rev 1.5)
+
+Žemiau pavaizduotas **tik keturių RXD/TXD kontaktų blokas**, ne visas J3.
+`●` reiškia kontaktą, stora linija – du kontaktus sujungiantį trumpiklį.
+Orientuok pagal plokštėje prie J3 atspausdintą **HW UART** schemą.
+
+```text
+    SW UART                         HW UART
+    Pradinė padėtis                  Mūsų projektui tinkama padėtis
+
+    ●       ●                       ●━━━━━━━●
+    ┃       ┃
+    ┃       ┃
+    ●       ●                       ●━━━━━━━●
+
+    Du lygiagretūs                   Abu trumpikliai pasukti 90°;
+    trumpikliai                      sujungta kiekviena eilė atskirai
+```
+
+1. Atjunk plokštės USB maitinimą.
+2. Surask **J3 RXD ir TXD** kontaktus.
+3. Jei nustatyta SW UART, abu UART trumpiklius perstatyk į parodytą HW UART
+   padėtį. Jei jau nustatyta HW UART, jų daugiau nesuk.
+4. **VCC, TEST ir RST** trumpiklius palik esamoje padėtyje.
+5. Prijunk USB, paleisk UART programą su **Resume**, iš naujo atidaryk COM4.
+
+Loginės signalų kryptys po perjungimo:
+
+```text
+Kompiuteris / USB–UART tiltas          MSP430G2553
+
+TX (siunčia komandą) ────────────────> P1.1 / UCA0RXD
+RX (priima atsakymą) <──────────────── P1.2 / UCA0TXD
+```
+
+Šių signalų ryšį užtikrina plokštės takeliai ir J3 trumpikliai; Rev 1.5
+plokštei papildomų UART laidų nereikia. Schema netaikoma Rev 1.4.
+
 Šioje Rev 1.5 plokštėje ryšys pradėjo veikti nustačius **HW UART** padėtį.
 Vien tai, kad veikia programos įrašymas per USB, dar nereiškia, kad UART
 trumpikliai nustatyti teisingai.
