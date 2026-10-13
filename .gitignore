@@ -1,0 +1,9 @@
+# CCS build output and local editor caches
+Debug/
+Release/
+.metadata/
+.clangd
+.cache/
+
+# CCS Cloud export archive
+/Test.tar
