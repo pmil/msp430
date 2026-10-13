@@ -1,17 +1,24 @@
 # MSP430 LaunchPad
 
-Mokomasis LED mirksėjimo projektas, sukurtas ir paleistas su CCS Cloud.
+Mokomieji LED ir UART projektai MSP430 LaunchPad plokštei.
+LED pavyzdys pradėtas CCS Cloud, UART ryšys patikrintas vietiniame CCS.
+
+## Projektai
+
+- [blink](blink/) – plokštėje patikrintas LED mirksėjimas.
+- [uart](uart/README.md) – atskiras projektas LED valdymui tekstinėmis komandomis
+  per 9600 baud UART; instrukcija, trumpiklių nustatymai ir PowerShell bandymas.
 
 ## Naudojama įranga
 
 | Parametras | Reikšmė |
 | --- | --- |
-| Plokštė | Texas Instruments MSP-EXP430G2 LaunchPad |
+| Plokštė | Texas Instruments MSP-EXP430G2 LaunchPad Rev 1.5 |
 | Mikrovaldiklis | MSP430G2553 |
 | LED išvadas | P1.0 |
 | Programavimo jungtis CCS | TI MSP430 USB1 |
 | UART prievadas šiame kompiuteryje | COM4 (kitame kompiuteryje gali skirtis) |
-| IDE | Code Composer Studio Cloud (CCS Cloud) |
+| IDE | Vietinis Code Composer Studio; pradinis blink pavyzdys iš CCS Cloud |
 | Kompiliatorius eksportuotame projekte | TI MSP430 21.6.3.LTS |
 | CCS projekto pavadinimas | Test |
 
@@ -20,14 +27,15 @@ Plokštės vadovas: [MSP-EXP430G2, SLAU318](https://www.ti.com/lit/ug/slau318g/s
 
 ## IDE ir pavyzdžio šaltinis
 
-Naudojame naršyklėje veikiančią **CCS Cloud**: pilnos IDE šiame projekte
-nesisiuntėme ir lokaliai nediegėme.
+Pradinis LED pavyzdys sukurtas naršyklėje veikiančioje **CCS Cloud**.
+Dabar naudojame ir kompiuteryje įdiegtą **CCS**; UART projekto paleidimas,
+Rev 1.5 HW UART trumpikliai ir terminalo komandos aprašyti [UART instrukcijoje](uart/README.md).
 
 - [TI Developer Zone](https://dev.ti.com/) – pradinis TI įrankių puslapis.
 - [CCS Cloud IDE](https://dev.ti.com/ide/) – programos redagavimas, kompiliavimas ir derinimas.
 - [TI Resource Explorer](https://dev.ti.com/tirex/) – pavyzdžiai ir dokumentacija.
 - [MSP430G2553 projektų vedlys](https://dev.ti.com/tirex/wizard?devices=MSP430G2553&isTheia=false) – nuoroda iš eksportuoto projekto konfigūracijos.
-- [CCS darbalaukio versijos atsisiuntimas](https://www.ti.com/tool/CCSTUDIO) – alternatyva darbui lokaliai; šiame projekte nenaudota.
+- [CCS darbalaukio versijos atsisiuntimas](https://www.ti.com/tool/CCSTUDIO) – naudojama darbui lokaliai.
 
 Pavyzdys paimtas iš TI Resource Explorer: **msp430g2xx3_1.c – Software Toggle P1.0**.
 Paieškoje pasirink MSP430G2553 ir ieškok šio pavyzdžio MSP430Ware / Code Examples.
@@ -87,7 +95,7 @@ Po darbo eksportuok atnaujintą projektą arba nukopijuok pakeistus šaltinius �
 cd C:\github\msp430
 git status
 git diff
-git add README.md .gitignore blink
+git add README.md .gitignore blink uart
 git commit -m "Aprasyti pakeitimai"
 git push
 ```
